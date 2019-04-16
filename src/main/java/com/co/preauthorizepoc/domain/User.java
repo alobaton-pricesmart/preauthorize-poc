@@ -18,12 +18,17 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.CollectionUtils;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author alobaton
  *
  */
 @Entity
-@Table(name = "message")
+@Table(name = "user")
+// This project use an embedded database, so this configuration is only for testing.
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User implements UserDetails {
 
 	/**
@@ -39,6 +44,7 @@ public class User implements UserDetails {
 	private String username;
 	@NotNull
 	@Column(name = "password")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
 	@NotNull
 	@Column(name = "account_non_expired")
@@ -121,6 +127,13 @@ public class User implements UserDetails {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	@Override
+	public String toString() {
+		return "User [authorities=" + authorities + ", username=" + username + ", password=" + password
+				+ ", accountNonExpired=" + accountNonExpired + ", accountNonLocked=" + accountNonLocked
+				+ ", credentialsNonExpired=" + credentialsNonExpired + ", enabled=" + enabled + "]";
 	}
 
 }
