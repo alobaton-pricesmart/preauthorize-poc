@@ -17,5 +17,4 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EntityScan(basePackages = { "com.co.preauthorizepoc.domain" })
 @EnableTransactionManagement
 public class PreauthorizePocCofiguration {
-
 }
