@@ -4,7 +4,7 @@ Custom PreAuthorize flow with Spring Security.
 
 ## Overview
 
-The Spring Security annotation @PreAuthorize allow us to have custom security expression. This POC show an easy way to do this, having access to the Request Context and the Security Context using a custom Permission Evaluator and an annotation to wrap all of this.
+The Spring Security annotation @PreAuthorize allow us to have custom security expression. This POC show an easy way to do this, having access to the Request Context and the Security Context using a custom Method Expression (also you can use a custom ExpressionEvaluator) and an annotation to wrap all of this.
 
 ## How to start?
 
