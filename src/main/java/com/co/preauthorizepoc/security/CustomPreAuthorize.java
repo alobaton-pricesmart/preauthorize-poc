@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.co.preauthorizepoc.annotations;
+package com.co.preauthorizepoc.security;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -20,7 +20,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-@PreAuthorize(value = "@securityService.hasAccess(authentication)")
+@PreAuthorize("customHasPermission()")
 public @interface CustomPreAuthorize {
 
 }
