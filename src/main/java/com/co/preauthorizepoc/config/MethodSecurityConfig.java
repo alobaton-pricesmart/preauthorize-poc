@@ -17,6 +17,9 @@ import com.co.preauthorizepoc.security.CustomMethodSecurityExpressionHandler;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
 
+	/**
+	 * Creates an expression handler for the method security context.
+	 */
 	@Override
 	protected MethodSecurityExpressionHandler createExpressionHandler() {
 		CustomMethodSecurityExpressionHandler expressionHandler = new CustomMethodSecurityExpressionHandler();

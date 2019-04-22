@@ -11,12 +11,17 @@ import org.springframework.security.authentication.AuthenticationTrustResolverIm
 import org.springframework.security.core.Authentication;
 
 /**
+ * This class handles the method security context.
+ * 
  * @author alobaton
  *
  */
 public class CustomMethodSecurityExpressionHandler extends DefaultMethodSecurityExpressionHandler {
 	private AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
 
+	/**
+	 * Build a custom security expression root.
+	 */
 	@Override
 	protected MethodSecurityExpressionOperations createSecurityExpressionRoot(Authentication authentication,
 			MethodInvocation invocation) {

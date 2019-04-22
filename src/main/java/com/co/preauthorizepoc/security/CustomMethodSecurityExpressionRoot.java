@@ -14,6 +14,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
+ * This class provide the mechanism to handle your custom pre authorize logic.
+ * 
  * @author alobaton
  *
  */
@@ -29,6 +31,11 @@ public class CustomMethodSecurityExpressionRoot extends SecurityExpressionRoot
 		super(authentication);
 	}
 
+	/**
+	 * Validate if the request has access to the requested source.
+	 * 
+	 * @return True if has permission, false otherwise.
+	 */
 	public boolean customHasPermission() {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();

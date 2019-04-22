@@ -28,11 +28,23 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
+	/**
+	 * Creates a user.
+	 * 
+	 * @param domain User ioformation.
+	 * @return The created user.
+	 */
 	@PostMapping
 	public User create(@Valid @RequestBody User domain) {
 		return service.create(domain);
 	}
 
+	/**
+	 * Get a user
+	 * 
+	 * @param id The user id
+	 * @return The user
+	 */
 	@GetMapping("/{id}")
 	@CustomPreAuthorize
 	public User get(@PathVariable String id) {

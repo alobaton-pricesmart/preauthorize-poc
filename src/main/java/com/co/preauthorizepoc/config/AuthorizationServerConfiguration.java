@@ -39,6 +39,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
 	private static final Log LOGGER = LogFactory.getLog(AuthorizationServerConfiguration.class);
 
+	/**
+	 * Authorization server resource id.
+	 */
 	@Value("${app.name}")
 	private String resourceId;
 
@@ -58,11 +61,21 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Autowired
 	private PasswordEncoder encoder;
 
+	/**
+	 * Build an authentication key generator.
+	 * 
+	 * @return Returns an authentication key generator.
+	 */
 	@Bean
 	public AuthenticationKeyGenerator authenticationKeyGenerator() {
 		return new DefaultAuthenticationKeyGenerator();
 	}
 
+	/**
+	 * Build a web response exception translator for the authorization context.
+	 * 
+	 * @return Returns a web authentication key generator.
+	 */
 	@Bean
 	public WebResponseExceptionTranslator<OAuth2Exception> webResponseExceptionTranslator() {
 		return new DefaultWebResponseExceptionTranslator() {

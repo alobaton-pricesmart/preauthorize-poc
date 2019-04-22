@@ -37,9 +37,17 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	private static final String[] PUBLIC_ACCESS = new String[] { "/", "/login**", "/webjars/**", "/error**",
 			"/oauth/authorize", "/oauth/confirm_access", "/actuator**", "/users", "/h2/**" };
 
+	/**
+	 * Authorization server resource id.
+	 */
 	@Value("${app.name}")
 	private String resourceId;
 
+	/**
+	 * Configure your cors.
+	 * 
+	 * @return Returns a cors configuration source.
+	 */
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
@@ -52,16 +60,31 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 		return source;
 	}
 
+	/**
+	 * Build a cors filter.
+	 * 
+	 * @return Returns a cors filter.
+	 */
 	@Bean
 	public CorsFilter corsFilter() {
 		return new CorsFilter(corsConfigurationSource());
 	}
 
+	/**
+	 * Build a token store.
+	 * 
+	 * @return Return a JWT token store.
+	 */
 	@Bean
 	public TokenStore tokenStore() {
 		return new JwtTokenStore(accessTokenConverter());
 	}
 
+	/**
+	 * Build an access token converter.
+	 * 
+	 * @return Returns an access token converter.
+	 */
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();

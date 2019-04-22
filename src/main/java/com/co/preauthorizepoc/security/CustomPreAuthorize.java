@@ -13,6 +13,8 @@ import java.lang.annotation.Target;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
+ * Custom pre authorize annotation.
+ * 
  * @author alobaton
  *
  */
